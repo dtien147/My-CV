@@ -1,0 +1,146 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,rem,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
+border:0;
+font:inherit;
+margin:0;
+padding:0;
+vertical-align:baseline;
+line-height: 1.5rem;
+}
+
+html, body {
+  background: #181818; 
+  font-family: 'Lato', helvetica, arial, sans-serif;   
+  color: #222;
+  font-size: 125%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#about {
+  color: black;
+}
+
+.bottomHeader {
+  width: 220px; 
+  height: 40px; 
+  background: #3699dc;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 0.9rem;   
+}
+
+.bottomHeader p {
+  font-weight: 600;
+  padding: 0px 20px; 
+  line-height: 40px; 
+}
+
+#cv {
+  background: black;
+  width: 90%;
+  max-width: 900px;  
+  margin: 30px auto;
+}
+
+.section-inner {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.middleHeader {
+  width: 220px; 
+  height: 40px; 
+  transform: skew(-25deg);
+  background: #304153;      
+  font-size: 0.9rem;   
+}
+
+.middleHeader p {
+  font-weight: 600;
+  padding: 0px 20px; 
+  transform: skew(25deg);
+  line-height: 40px; 
+  color: white;
+}
+
+@-webkit-keyframes reset {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes reset {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes reset {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.instaFade {
+    -webkit-animation-name: reset, fade-in;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: ease-in;
+	
+	-moz-animation-name: reset, fade-in;
+    -moz-animation-duration: 1.5s;
+    -moz-animation-timing-function: ease-in;
+	
+	animation-name: reset, fade-in;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+}
