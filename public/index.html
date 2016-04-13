@@ -1,22 +1,84 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="myPen" ng-controller="myCtrl">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
-	<title>My CV</title>
-	<link rel="stylesheet" href="css/style.css">
+	<title>My CV</title>	
 	<link rel="stylesheet" href="css/angular-material.min.css">
-	
-	<script src="js/angular.min.js"></script> 
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<script src="js/angular.js"></script> 
 	<script src="js/angular-sanitize.js"></script>
-	<script src="js/angular-animate.min.js"></script> 
-	<script src="js/angular-aria.min.js"></script> 
+	<script src="js/angular-animate.js"></script> 
+	<script src="js/angular-aria.js"></script> 
 	<script src="js/angular-material.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script>
 
 	<script src="js/index.js"></script>	
 	</head>
-<body>  
-	<div id="cv" class="instaFade md-whiteframe-24dp" ng-app="myPen" ng-controller="myCtrl" md-theme="default">
+<body id="home">	
+	<md-fab-speed-dial orient md-direction="{{navDirection}}" md-open="nav.isOpen"
+	                       class="md-scale md-fab-top-right" ng-class="{ 'md-hover-full': nav.hover }"
+	                       ng-mouseenter="nav.isOpen=true" ng-mouseleave="nav.isOpen=false" ng-click="nav.isOpen=!nav.isOpen" show-xs hide>
+	      <md-fab-trigger>
+	        <md-button aria-label="navigation" class="md-accent md-fab">
+	          <md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible" md-autohide="true">Navigation</md-tooltip>
+				<md-icon> reorder </md-icon>
+	      </md-fab-trigger>
+	      <md-fab-actions>
+				<md-button class="md-fab md-raised md-mini" href="#home" ng-click="gotoElement('home')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Home
+		            </md-tooltip>
+	                  <md-icon>home</md-icon>
+					</md-button>			
+					<md-button class="md-fab md-raised md-mini" href="#about" ng-click="gotoElement('about')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Giới thiệu bản thân         
+		            </md-tooltip>
+	                  <md-icon>face</md-icon>
+					</md-button>			
+					<md-button class="md-fab md-raised md-mini" href="#skills" ng-click="gotoElement('skills')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Kỹ năng        
+		            </md-tooltip>
+	                  <md-icon>build</md-icon>
+					</md-button>	
+					<md-button class="md-fab md-raised md-mini" href="#experience" ng-click="gotoElement('experience')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Kinh nghiệm       
+		            </md-tooltip>
+	                  <md-icon>domain</md-icon>
+					</md-button>							
+					<md-button class="md-fab md-raised md-mini" href="#education" ng-click="gotoElement('education')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Học vấn       
+		            </md-tooltip>
+	                  <md-icon>school</md-icon>
+					</md-button>		
+					</md-button>			
+					<md-button class="md-fab md-raised md-mini" href="#contact" g-click="gotoElement('contact')">
+					<md-tooltip orient md-direction="{{itemDirection}}" md-visible="tooltipVisible"
+		                        md-autohide="false">Liên hệ       
+		            </md-tooltip>
+	                  <md-icon>perm_contact_calendar</md-icon>
+					</md-button>				
+	      </md-fab-actions>
+	    </md-fab-speed-dial>
+	<md-toolbar class="md-accent" style="position: fixed; top: 0; z-index: 5; height: 80px;" hide-xs>		      
+		<div id="navigation" class="md-caption" hide-xs>		
+		<ul>
+			<li><a class="active" href="#home" ng-class="{active : activeMenu === 'HOME'}" ng-click="activeMenu = 'HOME'; gotoElement('home')">HOME</a></li>
+			<li><a href="#about" ng-class="{active : activeMenu === 'ABOUT'}" ng-click="activeMenu = 'ABOUT'; gotoElement('about')">ABOUT</a></li>
+			<li><a href="#skills" ng-class="{active : activeMenu === 'SKILLS'}" ng-click="activeMenu = 'SKILLS'; gotoElement('skills')">SKILLS</a></li>
+			<li><a href="#experience" ng-class="{active : activeMenu === 'EXPERIENCE'}" ng-click="activeMenu = 'EXPERIENCE'; gotoElement('experience')">EXPERIENCE</a></li>
+			<li><a href="#education" ng-class="{active : activeMenu === 'EDUCATION'}" ng-click="activeMenu = 'EDUCATION'; gotoElement('education')">EDUCATION</a></li>
+			<li><a href="#contact" ng-class="{active : activeMenu === 'CONTACT'}" ng-click="activeMenu = 'CONTACT'; gotoElement('contact')">CONTACT</a></li>
+		</ul>
+		</div>
+		</md-toolbar>
+	<div id="cv" class="instaFade md-whiteframe-24dp" md-theme="default" automargin ng-style="{'margin-top': y}">
 		<md-toolbar class="md-hue1"><div class="section-inner">
 				<p ng-bind-html="yourName" class="md-display-2"></p>
 				<p ng-bind-html="position" class="md-headline"></p>		
@@ -31,14 +93,14 @@
 					<div class="md-subhead" flex-gt-sm="30" layout="column" flex-sm="100" layout-fill>
 						<div flex-gt-sm="70" layout="row" layout-padding>
 							<div layout="row" hide show-sm layout-align="center center" flex-sm="40"><img ng-src="{{avatarUrl}}"/></div>
-							<div style="white-space:nowrap" flex-gt-sm="50" flex-xs="50" flex-sm="30" class="md-body-2" layout="column" layout-align="center start">
+							<div style="white-space:nowrap" flex-gt-sm="50" flex-xs="40" flex-sm="30" class="md-body-2" layout="column" layout-align="center start">
 								<p>Địa chỉ</p>
 								<p>Ngày sinh</p>
 								<p>Sở thích</p>
 								<p>Phone</p>
 								<p>Mail</p>
 							</div>
-							<div style="white-space:nowrap" flex-gt-sm="50" flex-xs="50" flex-sm="30" class="md-body-1" layout-align="center start" layout="column">
+							<div style="white-space:nowrap" flex-gt-sm="50" flex-xs="60" flex-sm="30" class="md-body-1" layout-align="center start" layout="column">
 								<p ng-bind-html="address"/>
 								<p ng-bind-html="birth"/>
 								<p ng-bind-html="hobbies"/>
@@ -46,13 +108,8 @@
 								<p ng-bind-html="mail"/>
 							</div>
 							</div>
-						<div flex-gt-sm="30">
-							<md-list layout="row" layout-align="center center">
-								<md-list-item ng-repeat="item in webs" flex="40" flex-sm="15" flex-xs="30">
-										<a href="{{item.webUrl}}"><img ng-src="{{item.imgUrl}}"/></a>							
-								</md-list-item>
-								</md-list>
-										<div show-sm hide><p class="md-body-1" ng-bind-html="intro" style="text-align: justify"/></div>		
+						<div flex-gt-sm="30">						
+							<div show-sm hide><p class="md-body-1" ng-bind-html="intro" style="text-align: justify"/></div>		
 						</div>              
 						</div>      
 					<div flex-gt-sm="20" flex-sm="60" hide-xs hide-sm><img ng-src="{{avatarUrl}}"/></div>
@@ -73,44 +130,55 @@
 				</div>
 			</div></md-toolbar> 
 		<md-toolbar class="md-hue-2"><div class="section-inner">
-			<div class="bottomHeader" id="exp">
-				<p>Kinh nghiệm</p>          
-				</div>               
-			<div>
-				<md-list>
-						<md-list-item ng-repeat="item in exps" layout="column">									
-							<div layout-gt-sm="row" layout-fill layout="column"> 
-								<li flex-gt-sm="80">{{item.main}}</li>
-									<div layout="row" flex-gt-sm="20" class="md-body-2" layout-align-gt-sm="end end">
-										{{item.time}}
-									</div>								
-								</div>			
-							<div class="md-body-1" ng-repeat="item in item.expContents" style="text-align: justify" layout-margin layout-fill>
-								<li  type="circle" >							
-									{{item.content}}
-								</li>							
-								</div>
-						</md-list-item>
-						</md-list>      					
-				</div>                 				
-			<div class="bottomHeader" id="edu">
-				<p>Học vấn</p>
+			<div id="experience">
+				<div class="bottomHeader">
+					<p>Kinh nghiệm</p>          
+					</div>               
+				<div>
+					<md-list>
+							<md-list-item ng-repeat="item in exps" layout="column">									
+								<div layout-gt-sm="row" layout-fill layout="column"> 
+									<li flex-gt-sm="80">{{item.main}}</li>
+										<div layout="row" flex-gt-sm="20" class="md-body-2" layout-align-gt-sm="end end">
+											{{item.time}}
+										</div>								
+									</div>			
+								<div class="md-body-1" ng-repeat="item in item.expContents" style="text-align: justify" layout-margin layout-fill>
+									<li  type="circle" >							
+										{{item.content}}
+									</li>							
+									</div>
+							</md-list-item>
+							</md-list>      					
+					</div>                 				
 				</div>
-			<div>
-				<md-list>
-						<md-list-item ng-repeat="item in edus" layout="column">							
-							<div layout-gt-sm="row" layout-fill layout="column"> 
-								<li flex-gt-sm="80">{{item.main}}</li>
-									<div layout="row" flex-gt-sm="20" class="md-body-2" layout-align-gt-sm="end end">
-										{{item.time}}
-									</div>								
-								</div>				
-							<div class="md-body-1" style="text-align: justify" layout-margin layout-fill>						
-									{{item.content}}					
-								</div>						
-						</md-list-item>
-						</md-list>      					
-				</div>                 				
+			<div id="education">
+				<div class="bottomHeader">
+					<p>Học vấn</p>
+					</div>
+				<div>
+					<md-list>
+							<md-list-item ng-repeat="item in edus" layout="column" layout-padding>							
+								<div layout-gt-sm="row" layout-fill layout="column"> 
+									<li flex-gt-sm="80">{{item.main}}</li>
+										<div layout="row" flex-gt-sm="20" class="md-body-2" layout-align-gt-sm="end end">
+											{{item.time}}
+										</div>								
+									</div>				
+								<div class="md-body-1" style="text-align: justify" layout-margin layout-fill>						
+										{{item.content}}					
+									</div>						
+							</md-list-item>
+							</md-list>      					
+					</div>         
+				</div>        				
+			<div layout="row" layout-padding layout-align="end end" id="contact">	
+				<a href ng-click="showContact($event)"><ng-md-icon icon="perm_contact_calendar" style="fill: white"><md-tooltip>Gửi tin nhắn cho tôi</md-tooltip></ng-md-icon></a>
+				<a href="mailto:{{mail}}"><ng-md-icon icon="contact_mail" style="fill: white"><md-tooltip>Liên hệ qua mail</md-tooltip></ng-md-icon></a>
+				<a href="tel:{{phone}}"><ng-md-icon icon="contact_phone" style="fill: white"><md-tooltip>Liên hệ qua điện thoại</md-tooltip></ng-md-icon></a>
+				<a href="{{gitURL}}"><ng-md-icon icon="github-box" style="fill: white"><md-tooltip>Ứng dụng đã làm</md-tooltip></ng-md-icon></a>
+				<a href="{{faceURL}}"><ng-md-icon icon="facebook-box" style="fill: white"><md-tooltip>Facebook của tôi</md-tooltip></ng-md-icon></a>
+			</div>
 			</div></md-toolbar>
 		</div>
 </body>           

@@ -1,0 +1,35 @@
+<md-dialog aria-label="Contact me" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Contact me</h2>
+        <span flex></span>
+        <a href ng-click="cancel()">
+          <ng-md-icon icon="close" style="fill: white"></ng-md-icon> 
+          </a>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="employer.name">
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input ng-model="employer.email" type="email">
+      </md-input-container>
+      <md-input-container class="md-block">
+          <label>Message</label>
+          <textarea ng-model="employer.message" columns="1" md-maxlength="150" rows="5"></textarea>
+      </md-input-container>
+      </div>       
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Submit
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
